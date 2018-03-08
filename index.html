@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <title>Class Grade Calculator</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/index.processed.css">
+  
+  <!-- Scripts -->
+  <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+</head>
+<body>
+  
+
+  
+  <div id="calculator">
+    <assignment-item
+      v-for="item in assignments"
+      v-bind:assignment="item"
+      v-bind:key="item.id">
+    </assignment-item>
+    
+    <input v-model="newTask" placeholder="What do you need to do?" @keyup.enter="addTask">
+    <input type="number" v-model="newGrade" placeholder="Average">
+
+    {{ newTask }}: {{ newGrade }} <br />
+    {{ total() }}
+  </div>
+  
+  <!-- Scripts -->
+  <script src="/scripts/index.js"></script>
+</body>
+</html>
