@@ -1,11 +1,11 @@
 Vue.component('assignment-item', {
   props: ['assignment'],
-  template: '<div>{{ assignment.text }} {{ assignment.weight }}</div>'
+  template: '<div class="assignment-item">{{ assignment.text }} <div class="assignment-grade">{{ assignment.grade }}<span class="assignment-weight">/{{ assignment.weight }} points</span></div></div>'
 })
 
 var gpaCalc = new Vue({
   el: '#calculator',
-  
+
   data: {
     newTask: "",
     newGrade: 20,
@@ -16,9 +16,8 @@ var gpaCalc = new Vue({
       { weight: 15, text: 'Quiz' }
     ]
   },
-  
-  methods: {
 
+  methods: {
     addTask: function () {
       var task = this.newTask.trim();
       var grade = this.newGrade;
@@ -28,7 +27,7 @@ var gpaCalc = new Vue({
         this.newTask = "";
       }
     },
-    
+
     total: function() {
       var subtotal = 0;
       var total = 0;
@@ -36,9 +35,9 @@ var gpaCalc = new Vue({
       this.assignments.forEach(function(s) {
         subtotal += s.weight;
       });
-       
+
       total = subtotal/4;
-      
+
       return total;
     }
   }
